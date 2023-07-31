@@ -30,6 +30,8 @@ export function Cartridge()
         }
     )
 
+    console.log(materials.cartridge.normalMap)
+
     return <>
         <mesh
             rotation-x={ Math.PI * 0.5 }
@@ -39,6 +41,7 @@ export function Cartridge()
             <MeshTransmissionMaterial
                 normalMap={ materials.cartridge.normalMap }
                 normalMap-colorSpace={ THREE.LinearSRGBColorSpace }
+                normalMapType={ THREE.ObjectSpaceNormalMap }
                 background={ new THREE.Color(config.bg) }
                 { ...config }
             />
