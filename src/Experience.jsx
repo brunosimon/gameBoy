@@ -1,5 +1,5 @@
 import { Float, OrbitControls } from '@react-three/drei'
-import { Cartridge } from './Cartridge.jsx'
+import { Case } from './Case.jsx'
 import { Circuit } from './Circuit.jsx'
 import { Effects } from './Effects.jsx'
 import { Stage } from './Stage.jsx'
@@ -7,6 +7,7 @@ import { Canvas } from '@react-three/fiber'
 import { useControls } from 'leva'
 import * as THREE from 'three'
 import './customToneMapping.js'
+import { Screw } from './Screw.jsx'
 
 export default function Experience()
 {
@@ -32,7 +33,8 @@ export default function Experience()
         <OrbitControls makeDefault />
         <Float>
             <Circuit />
-            <Cartridge />
+            <Case />
+            <Screw />
         </Float>
         <Effects />
         <Stage />
