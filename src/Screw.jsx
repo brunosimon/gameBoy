@@ -1,11 +1,27 @@
 import { useGLTF } from '@react-three/drei'
-import * as THREE from 'three'
+import { useEffect } from 'react'
+import useStore from './useStore.js'
 
 export function Screw()
 {
-    const model = useGLTF('/models/screw.glb')
+    const { scene, materials } = useGLTF('/models/screw.glb')
+    const [ envMapIntensity ] = useStore(state => [ state.envMapIntensity ])
+
+    useEffect(() =>
+    {
+        scene.traverse((_child) =>
+        {
+            if(_child.isMesh)
+            {
+                _child.castShadow = true
+                _child.receiveShadow = true
+            }
+        })
+    }, [])
+
+    materials.screw.envMapIntensity = envMapIntensity
     
     return <>
-        <primitive object={ model.scene } />
+        <primitive object={ scene } />
     </>
 }

@@ -1,19 +1,28 @@
 import {  useGLTF } from '@react-three/drei'
 import { useControls } from 'leva'
+import { useEffect } from 'react'
+import useStore from './useStore.js'
 
 export function Circuit()
 {
-    const { scene } = useGLTF('/models/circuit.glb')
-    
-    const config = useControls(
-        'circuit',
+    const { scene, materials } = useGLTF('/models/circuit.glb')
+    const [ envMapIntensity ] = useStore(state => [ state.envMapIntensity ])
+
+    useEffect(() =>
+    {
+        scene.traverse((_child) =>
         {
-            position: { value: [ 0, 0, -0.35 ], min: - 3, max: 3, step: 0.01 },
-            scale: { value: [ 1.4, 1.23, 0.75 ], min: 0, max: 3, step: 0.01 },
-        }
-    )
+            if(_child.isMesh)
+            {
+                _child.castShadow = true
+                _child.receiveShadow = true
+            }
+        })
+    }, [])
+
+    materials.circuit.envMapIntensity = envMapIntensity
 
     return <>
-        <primitive object={ scene } { ...config } />
+        <primitive object={ scene } />
     </>
 }
