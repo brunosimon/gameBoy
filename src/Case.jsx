@@ -1,12 +1,19 @@
 import { MeshTransmissionMaterial, useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 import { useControls } from 'leva'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
+import { DynamicTween, easeInOutCubic } from 'twon'
 
-export function Case()
+export function Case({ exploded })
 {
     const { scene, nodes, materials } = useGLTF('/models/case.glb')
+    const back = useRef()
+    const front = useRef()
     
+    /**
+     * Configs
+     */
     const config = useControls(
         'cartridge.material',
         {
@@ -31,22 +38,57 @@ export function Case()
         }
     )
 
+    /**
+     * Meshes
+     */
     useEffect(() =>
     {
         scene.traverse((_child) =>
         {
             if(_child.isMesh)
             {
-                _child.castShadow = true
+                // _child.castShadow = true
                 // _child.receiveShadow = true
             }
         })
     }, [])
 
+    /**
+     * Explode animation
+     */
+    const [ tween ] = useState(() =>
+    {
+        return new DynamicTween(0, { ease: easeInOutCubic })
+    })
+
+    useEffect(() =>
+    {
+        if(tween)
+            tween.to(exploded ? 1 : 0)
+    }, [ exploded ])
+
+    useFrame(() =>
+    {
+        back.current.position.z = tween.getValue() * - 1.5
+        front.current.position.z = tween.getValue() * 3
+    })
+
     return <>
         <mesh
-            // rotation-x={ Math.PI * 0.5 }
-            geometry={ nodes.case003.geometry }
+            ref={ back }
+            geometry={ nodes.caseBack.geometry }
+        >
+            <MeshTransmissionMaterial
+                normalMap={ materials.case.normalMap }
+                normalMap-colorSpace={ THREE.LinearSRGBColorSpace }
+                normalMapType={ THREE.ObjectSpaceNormalMap }
+                background={ new THREE.Color(config.bg) }
+                { ...config }
+            />
+        </mesh>
+        <mesh
+            ref={ front }
+            geometry={ nodes.caseFront.geometry }
         >
             <MeshTransmissionMaterial
                 normalMap={ materials.case.normalMap }
