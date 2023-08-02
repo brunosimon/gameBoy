@@ -12,7 +12,7 @@ export function Stage()
         {
             // preset: { value: 'studio', options: [ 'apartment', 'city', 'dawn', 'forest', 'lobby', 'night', 'park', 'studio', 'sunset', 'warehouse', ] },
             background: { value: false },
-            blur: { value: 1, min: 0, max: 1, step: 0.001 },
+            blur: { value: 0, min: 0, max: 1, step: 0.001 },
             intensity: { value: envMapIntensity, min: 0, max: 1, onChange: (value) =>
             {
                 if(value !== envMapIntensity)
@@ -50,7 +50,7 @@ export function Stage()
             shadow-normalBias={ directionalLightConfig.normalBias }
         />
         {/* <Environment { ...environmentConfig } /> */}
-        <Environment files={ './envMaps/custom001.hdr' } { ...environmentConfig } />
+        <Environment files={ './envMaps/custom-002.hdr' } { ...environmentConfig } />
         {/* <Environment resolution={256}>
             <Lightformer
                 position={[ -5, 0, 5]}
