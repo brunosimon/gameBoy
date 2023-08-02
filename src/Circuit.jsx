@@ -28,14 +28,14 @@ export function Circuit({ exploded })
      * Materials
      */
     materials.circuit.envMapIntensity = envMapIntensity
-    materials.circuit.roughness = 0.4
+    materials.circuit.roughness = 0.5
 
     /**
      * Explode animation
      */
     const [ tween ] = useState(() =>
     {
-        return new DynamicTween(0, { ease: easeInOutCubic })
+        return new DynamicTween(0, { ease: easeInOutCubic, duration: 2000 })
     })
 
     useEffect(() =>

@@ -29,7 +29,7 @@ export function Sticker({ exploded })
      */
     const [ tween ] = useState(() =>
     {
-        return new DynamicTween(0, { ease: easeInOutCubic })
+        return new DynamicTween(0, { ease: easeInOutCubic, duration: 2000 })
     })
 
     useEffect(() =>

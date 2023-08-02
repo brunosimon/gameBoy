@@ -1,8 +1,8 @@
-import { Loader, OrbitControls } from '@react-three/drei'
+import { CameraControls, Loader } from '@react-three/drei'
 import { Effects } from './Effects.jsx'
 import { Stage } from './Stage.jsx'
 import { Canvas } from '@react-three/fiber'
-import { useControls } from 'leva'
+import { Leva, useControls } from 'leva'
 import * as THREE from 'three'
 import './customToneMapping.js'
 import { Cartridge } from './Cartridge.jsx'
@@ -18,6 +18,7 @@ export default function Experience()
         }
     )
     return <>
+        <Leva hidden={ location.hash !== '#debug' } />
         <Canvas
             shadows
             camera={ {
@@ -31,7 +32,7 @@ export default function Experience()
                 toneMappingExposure: canvasConfig.toneMappingExposure,
             } }
         >
-            <OrbitControls makeDefault />
+            <CameraControls makeDefault />
             <Suspense>
                 <Cartridge />
             </Suspense>
