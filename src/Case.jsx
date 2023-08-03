@@ -4,7 +4,7 @@ import { useControls } from 'leva'
 import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { DynamicTween, easeInOutCubic } from 'twon'
-import useStore from './useStore.js'
+import useStore from './helpers/useStore.js'
 
 export function Case()
 {
@@ -71,8 +71,8 @@ export function Case()
 
     useFrame(() =>
     {
-        back.current.position.z = tween.getValue() * - 1.5
-        front.current.position.z = tween.getValue() * 3
+        back.current.position.z = tween.getValue() * - 2.5
+        front.current.position.z = tween.getValue() * 2
     })
 
     return <>

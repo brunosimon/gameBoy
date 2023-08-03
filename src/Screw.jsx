@@ -1,6 +1,6 @@
 import { useGLTF } from '@react-three/drei'
 import { useEffect, useState } from 'react'
-import useStore from './useStore.js'
+import useStore from './helpers/useStore.js'
 import { DynamicTween, easeInOutCubic } from 'twon'
 import { useFrame } from '@react-three/fiber'
 
@@ -40,7 +40,7 @@ export function Screw()
 
     useFrame(() =>
     {
-        nodes.Scene.position.z = tween.getValue() * - 3
+        nodes.Scene.position.z = tween.getValue() * - 4
         nodes.screw.rotation.z = - tween.getValue() * 10
     })
 

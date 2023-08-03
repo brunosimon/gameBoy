@@ -1,6 +1,6 @@
 
 import { useEffect } from 'react'
-import useStore from './useStore.js'
+import useStore from './helpers/useStore.js'
 
 export default function UI()
 {

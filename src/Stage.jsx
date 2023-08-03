@@ -1,7 +1,7 @@
 import { Environment, Lightformer } from '@react-three/drei'
 import { useControls } from 'leva'
 import { useEffect, useRef } from 'react'
-import useStore from './useStore.js'
+import useStore from './helpers/useStore.js'
 
 export function Stage()
 {

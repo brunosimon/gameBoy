@@ -3,7 +3,7 @@ import { Case } from './Case.jsx'
 import { Circuit } from './Circuit.jsx'
 import { Screw } from './Screw.jsx'
 import { Sticker } from './Sticker.jsx'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 
 export function Cartridge()

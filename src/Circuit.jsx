@@ -2,7 +2,7 @@ import {  useGLTF } from '@react-three/drei'
 import { useEffect, useState } from 'react'
 import { DynamicTween, easeInOutCubic } from 'twon'
 import { useFrame } from '@react-three/fiber'
-import useStore from './useStore.js'
+import useStore from './helpers/useStore.js'
 
 export function Circuit()
 {
@@ -48,11 +48,12 @@ export function Circuit()
     useFrame(() =>
     {
         // console.log(nodes)
-        nodes.battery.position.z = tween.getValue() * 1/5 * 1.5
-        nodes.chipset1.position.z = tween.getValue() * 2/5 * 1.5
-        nodes.chipset2.position.z = tween.getValue() * 3/5 * 1.5
-        nodes.chipset3.position.z = tween.getValue() * 4/5 * 1.5
-        nodes.chipset4.position.z = tween.getValue() * 5/5 * 1.5
+        nodes.board.position.z  = tween.getValue() * (0/5 * 1.5 - 1)
+        nodes.battery.position.z  = tween.getValue() * (1/5 * 1.5 - 1)
+        nodes.chipset1.position.z = tween.getValue() * (2/5 * 1.5 - 1)
+        nodes.chipset2.position.z = tween.getValue() * (3/5 * 1.5 - 1)
+        nodes.chipset3.position.z = tween.getValue() * (4/5 * 1.5 - 1)
+        nodes.chipset4.position.z = tween.getValue() * (5/5 * 1.5 - 1)
     })
 
     return <>
