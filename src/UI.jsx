@@ -1,11 +1,12 @@
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useStore from './helpers/useStore.js'
 import { Howl, Howler } from 'howler'
 
 export default function UI()
 {
     const [ exploded, toggleExploded, wireframe, setWireframe ] = useStore(state => [ state.exploded, state.toggleExploded, state.wireframe, state.setWireframe ])
+    const firstRender = useRef(true)
 
     useEffect(() =>
     {
@@ -40,10 +41,15 @@ export default function UI()
 
     useEffect(() =>
     {
-        if(exploded)
-            openingSound.play()
-        else
-            closingSound.play()
+        if(!firstRender.current)
+        {
+            if(exploded)
+                openingSound.play()
+            else
+                closingSound.play()
+        }
+
+        firstRender.current = false
     }, [ exploded ])
     
     return <div className="ui">

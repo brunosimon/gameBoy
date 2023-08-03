@@ -29,7 +29,9 @@ export function Circuit()
      */
     materials.circuit.envMapIntensity = envMapIntensity
     materials.circuit.roughness = 0.5
-    materials.circuit.wireframe = wireframe
+    // materials.circuit.wireframe = wireframe
+    nodes.board.material.wireframe = wireframe
+    nodes.chipset1.material.wireframe = wireframe
 
     /**
      * Explode animation
