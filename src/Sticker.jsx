@@ -7,7 +7,7 @@ import { useFrame } from '@react-three/fiber'
 export function Sticker()
 {
     const { scene, nodes, materials } = useGLTF('/models/sticker.glb')
-    const [ envMapIntensity, exploded ] = useStore(state => [ state.envMapIntensity, state.exploded ])
+    const [ envMapIntensity, exploded, wireframe ] = useStore(state => [ state.envMapIntensity, state.exploded, state.wireframe ])
 
     /**
      * Meshes
@@ -50,9 +50,11 @@ export function Sticker()
     materials.sticker.map.anisotropy = 8
     materials.sticker.normalMap.anisotropy = 8
     materials.sticker.roughnessMap.anisotropy = 8
+    materials.sticker.roughness = 0.4
+    materials.sticker.wireframe = wireframe
     
     materials.stickerBack.envMapIntensity = envMapIntensity
-    materials.sticker.roughness = 0.4
+    materials.stickerBack.wireframe = wireframe
 
     return <>
         <primitive object={ scene } />

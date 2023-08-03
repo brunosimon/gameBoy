@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import useStore from './useStore.js'
 
 export default create((set) =>
 {
@@ -18,6 +17,14 @@ export default create((set) =>
             set((state) =>
             {
                 return { exploded: !state.exploded }
+            })
+        },
+        wireframe: false,
+        setWireframe: (value) =>
+        {
+            set(() =>
+            {
+                return { wireframe: value }
             })
         },
     }

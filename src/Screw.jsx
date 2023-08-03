@@ -7,7 +7,7 @@ import { useFrame } from '@react-three/fiber'
 export function Screw()
 {
     const { scene, materials, nodes } = useGLTF('/models/screw.glb')
-    const [ envMapIntensity, exploded ] = useStore(state => [ state.envMapIntensity, state.exploded ])
+    const [ envMapIntensity, exploded, wireframe ] = useStore(state => [ state.envMapIntensity, state.exploded, state.wireframe ])
 
     /**
      * Meshes
@@ -48,6 +48,7 @@ export function Screw()
      * Materials
      */
     materials.screw.envMapIntensity = envMapIntensity
+    materials.screw.wireframe = wireframe
     
     return <>
         <primitive object={ nodes.Scene } />

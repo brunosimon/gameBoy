@@ -7,7 +7,7 @@ import useStore from './useStore.js'
 export function Circuit()
 {
     const { nodes, materials } = useGLTF('/models/circuit.glb')
-    const [ envMapIntensity, exploded ] = useStore(state => [ state.envMapIntensity, state.exploded ])
+    const [ envMapIntensity, exploded, wireframe ] = useStore(state => [ state.envMapIntensity, state.exploded, state.wireframe ])
 
     /**
      * Meshes
@@ -29,6 +29,7 @@ export function Circuit()
      */
     materials.circuit.envMapIntensity = envMapIntensity
     materials.circuit.roughness = 0.5
+    materials.circuit.wireframe = wireframe
 
     /**
      * Explode animation

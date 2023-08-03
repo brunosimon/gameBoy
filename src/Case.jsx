@@ -9,7 +9,7 @@ import useStore from './useStore.js'
 export function Case()
 {
     const { scene, nodes, materials } = useGLTF('/models/case.glb')
-    const [ exploded ] = useStore(state => [ state.exploded ])
+    const [ exploded, wireframe ] = useStore(state => [ state.exploded, state.wireframe ])
     const back = useRef()
     const front = useRef()
     
@@ -85,6 +85,7 @@ export function Case()
                 normalMap-colorSpace={ THREE.LinearSRGBColorSpace }
                 normalMapType={ THREE.ObjectSpaceNormalMap }
                 background={ new THREE.Color(config.bg) }
+                wireframe={ wireframe }
                 { ...config }
             />
         </mesh>
@@ -97,6 +98,7 @@ export function Case()
                 normalMap-colorSpace={ THREE.LinearSRGBColorSpace }
                 normalMapType={ THREE.ObjectSpaceNormalMap }
                 background={ new THREE.Color(config.bg) }
+                wireframe={ wireframe }
                 { ...config }
             />
         </mesh>

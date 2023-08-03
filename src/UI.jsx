@@ -4,7 +4,7 @@ import useStore from './useStore.js'
 
 export default function UI()
 {
-    const [ toggleExploded ] = useStore(state => [ state.toggleExploded ])
+    const [ exploded, toggleExploded, wireframe, setWireframe ] = useStore(state => [ state.exploded, state.toggleExploded, state.wireframe, state.setWireframe ])
 
     useEffect(() =>
     {
@@ -23,8 +23,23 @@ export default function UI()
     }, [])
     
     return <div className="ui">
+
+        {/* Explode button */}
         <button className="explode-button" onClick={ toggleExploded }>
-            SPACE to explode
+            SPACE to { exploded ? 'IMPLODE' : 'EXPLODE' }
         </button>
+
+        {/* Wireframe */}
+        <div className="group">
+            <div className="label">mode</div>
+            <button
+                className={ `choice is-mode-plain ${ !wireframe ? 'is-active' : '' }` }
+                onClick={ () => setWireframe(false) }
+            ><span className="icon" /></button>
+            <button
+                className={ `choice is-mode-wireframe ${ wireframe ? 'is-active' : '' }` }
+                onClick={ () => setWireframe(true) }
+            ><span className="icon" /></button>
+        </div>
     </div>
 }
