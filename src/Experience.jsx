@@ -7,6 +7,7 @@ import * as THREE from 'three'
 import './customToneMapping.js'
 import { Cartridge } from './Cartridge.jsx'
 import { Suspense } from 'react'
+import UI from './UI.jsx'
 
 export default function Experience()
 {
@@ -39,6 +40,7 @@ export default function Experience()
             <Effects />
             <Stage />
         </Canvas>
+        <UI />
         <Loader />
     </>
 }

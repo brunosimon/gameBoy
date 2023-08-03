@@ -4,10 +4,12 @@ import { useControls } from 'leva'
 import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { DynamicTween, easeInOutCubic } from 'twon'
+import useStore from './useStore.js'
 
-export function Case({ exploded })
+export function Case()
 {
     const { scene, nodes, materials } = useGLTF('/models/case.glb')
+    const [ exploded ] = useStore(state => [ state.exploded ])
     const back = useRef()
     const front = useRef()
     

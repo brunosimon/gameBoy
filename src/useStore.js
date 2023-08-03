@@ -11,6 +11,14 @@ export default create((set) =>
             {
                 return { envMapIntensity: value }
             })
-        }
+        },
+        exploded: false,
+        toggleExploded: () =>
+        {
+            set((state) =>
+            {
+                return { exploded: !state.exploded }
+            })
+        },
     }
 })

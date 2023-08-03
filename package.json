@@ -20,6 +20,7 @@
     "r3f-perf": "^7.1.2",
     "react": "18.2",
     "react-dom": "18.2",
+    "stylus": "^0.59.0",
     "three": "^0.153.0",
     "twon": "^0.1.0",
     "vite-plugin-glsl": "^1.1.2",

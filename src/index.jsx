@@ -1,4 +1,4 @@
-import './style.css'
+import './style.styl'
 import ReactDOM from 'react-dom/client'
 import Experience from './Experience.jsx'
 

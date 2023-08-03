@@ -1,13 +1,13 @@
 import {  useGLTF } from '@react-three/drei'
 import { useEffect, useState } from 'react'
-import useStore from './useStore.js'
 import { DynamicTween, easeInOutCubic } from 'twon'
 import { useFrame } from '@react-three/fiber'
+import useStore from './useStore.js'
 
-export function Circuit({ exploded })
+export function Circuit()
 {
     const { nodes, materials } = useGLTF('/models/circuit.glb')
-    const [ envMapIntensity ] = useStore(state => [ state.envMapIntensity ])
+    const [ envMapIntensity, exploded ] = useStore(state => [ state.envMapIntensity, state.exploded ])
 
     /**
      * Meshes

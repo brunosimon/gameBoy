@@ -4,10 +4,10 @@ import useStore from './useStore.js'
 import { DynamicTween, easeInOutCubic } from 'twon'
 import { useFrame } from '@react-three/fiber'
 
-export function Screw({ exploded })
+export function Screw()
 {
     const { scene, materials, nodes } = useGLTF('/models/screw.glb')
-    const [ envMapIntensity ] = useStore(state => [ state.envMapIntensity ])
+    const [ envMapIntensity, exploded ] = useStore(state => [ state.envMapIntensity, state.exploded ])
 
     /**
      * Meshes

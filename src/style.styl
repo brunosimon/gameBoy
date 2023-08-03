@@ -1,0 +1,45 @@
+*
+    box-sizing border-box
+    padding 0
+    margin 0
+
+html
+body
+#root
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: #000000
+
+.ui
+    position absolute
+    top 0
+    left 0
+    width 100%
+    height 100%
+    pointer-events none
+
+    *
+        pointer-events auto
+        font-family 'Roboto', sans-serif
+        font-weight 900
+
+    .explode-button
+        position absolute
+        bottom 40px
+        left calc(50% - 80px)
+        width 160px
+        height 40px
+        border-radius 8px
+        appearance none
+        background none
+        border 2px solid
+        color #ffffff
+        cursor pointer
+        opacity 0.8
+        transition opacity 0.15s
+
+        &:hover
+            opacity 1
