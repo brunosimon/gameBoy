@@ -33,7 +33,7 @@ export default function Experience()
                 toneMappingExposure: canvasConfig.toneMappingExposure,
             } }
         >
-            <CameraControls makeDefault />
+            <CameraControls makeDefault maxDistance={ 35 } dollySpeed={0.25} />
             <Suspense>
                 <Cartridge />
             </Suspense>

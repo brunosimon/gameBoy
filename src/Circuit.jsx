@@ -1,4 +1,4 @@
-import {  useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { useEffect, useState } from 'react'
 import { DynamicTween, easeInOutCubic } from 'twon'
 import { useFrame } from '@react-three/fiber'

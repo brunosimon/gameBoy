@@ -1,4 +1,4 @@
-import {  useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { useEffect, useState } from 'react'
 import useStore from './helpers/useStore.js'
 import { DynamicTween, easeInOutCubic } from 'twon'
