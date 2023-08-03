@@ -1,6 +1,7 @@
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import useStore from './helpers/useStore.js'
+import { Howl, Howler } from 'howler'
 
 export default function UI()
 {
@@ -21,6 +22,29 @@ export default function UI()
             removeEventListener('keydown', handler)
         }
     }, [])
+
+    const [ openingSound ] = useState(() =>
+    {
+        return new Howl({
+            src: [ './sounds/debrisOpening.mp3' ],
+            volume: 0.3
+        }) 
+    })
+    const [ closingSound ] = useState(() =>
+    {
+        return new Howl({
+            src: [ './sounds/debrisClosing.mp3' ],
+            volume: 0.3
+        }) 
+    })
+
+    useEffect(() =>
+    {
+        if(exploded)
+            openingSound.play()
+        else
+            closingSound.play()
+    }, [ exploded ])
     
     return <div className="ui">
 

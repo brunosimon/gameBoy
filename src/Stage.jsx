@@ -42,9 +42,27 @@ export function Stage()
         <directionalLight
             position={ [ -6, 0, 2 ] }
             castShadow
-            shadow-mapSize={ [ 1024, 1024 ] }
+            shadow-mapSize={ [ 512, 512 ] }
             color={ directionalLightConfig.color }
-            intensity={ directionalLightConfig.intensity }
+            intensity={ directionalLightConfig.intensity / 3 }
+            shadow-bias={ directionalLightConfig.bias }
+            shadow-normalBias={ directionalLightConfig.normalBias }
+        />
+        <directionalLight
+            position={ [ -6, 0, 2 ] }
+            castShadow
+            shadow-mapSize={ [ 256, 256 ] }
+            color={ directionalLightConfig.color }
+            intensity={ directionalLightConfig.intensity / 3 }
+            shadow-bias={ directionalLightConfig.bias }
+            shadow-normalBias={ directionalLightConfig.normalBias }
+        />
+        <directionalLight
+            position={ [ -6, 0, 2 ] }
+            castShadow
+            shadow-mapSize={ [ 128, 128 ] }
+            color={ directionalLightConfig.color }
+            intensity={ directionalLightConfig.intensity / 3 }
             shadow-bias={ directionalLightConfig.bias }
             shadow-normalBias={ directionalLightConfig.normalBias }
         />
